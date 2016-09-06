@@ -1,10 +1,10 @@
-package;
+package com.player03.android6;
 
 #if (android && openfl)
 
 import openfl.utils.JNI;
 
-class Android6Permissions {
+class Permissions {
 	public static inline var READ_CALENDAR:String			= "android.permission.READ_CALENDAR";
 	public static inline var WRITE_CALENDAR:String			= "android.permission.WRITE_CALENDAR";
 	public static inline var CAMERA:String					= "android.permission.CAMERA";
@@ -78,6 +78,49 @@ class Android6Permissions {
 	private static var requestPermissionJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "requestPermission", "(Ljava/lang/String;)V");
 	private static var requestPermissionsJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "requestPermissions", "([Ljava/lang/String;)V");
 	private static var shouldShowRequestPermissionRationaleJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "shouldShowRequestPermissionRationale", "(Ljava/lang/String;)Z");
+}
+
+#else
+
+class Permissions {
+	public static inline var READ_CALENDAR:String			= null;
+	public static inline var WRITE_CALENDAR:String			= null;
+	public static inline var CAMERA:String					= null;
+	public static inline var READ_CONTACTS:String			= null;
+	public static inline var WRITE_CONTACTS:String			= null;
+	public static inline var GET_ACCOUNTS:String			= null;
+	public static inline var ACCESS_FINE_LOCATION:String	= null;
+	public static inline var ACCESS_COARSE_LOCATION:String	= null;
+	public static inline var RECORD_AUDIO:String			= null;
+	public static inline var READ_PHONE_STATE:String		= null;
+	public static inline var CALL_PHONE:String				= null;
+	public static inline var READ_CALL_LOG:String			= null;
+	public static inline var WRITE_CALL_LOG:String			= null;
+	public static inline var ADD_VOICEMAIL:String			= null;
+	public static inline var USE_SIP:String					= null;
+	public static inline var PROCESS_OUTGOING_CALLS:String	= null;
+	public static inline var BODY_SENSORS:String			= null;
+	public static inline var SEND_SMS:String				= null;
+	public static inline var RECEIVE_SMS:String				= null;
+	public static inline var READ_SMS:String				= null;
+	public static inline var RECEIVE_WAP_PUSH:String		= null;
+	public static inline var RECEIVE_MMS:String				= null;
+	public static inline var READ_EXTERNAL_STORAGE:String	= null;
+	public static inline var WRITE_EXTERNAL_STORAGE:String	= null;
+	
+	public static inline function hasPermission(permission:String):Bool {
+		return true;
+	}
+	
+	public static inline function requestPermission(permission:String):Void {
+	}
+	
+	public static inline function requestPermissions(permissions:Array<String>):Void {
+	}
+	
+	public static inline function shouldShowRequestPermissionRationale(permission:String):Bool {
+		return false;
+	}
 }
 
 #end
