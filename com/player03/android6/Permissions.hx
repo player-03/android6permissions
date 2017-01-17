@@ -5,30 +5,30 @@ package com.player03.android6;
 import openfl.utils.JNI;
 
 class Permissions {
-	public static inline var READ_CALENDAR:String			= "android.permission.READ_CALENDAR";
-	public static inline var WRITE_CALENDAR:String			= "android.permission.WRITE_CALENDAR";
-	public static inline var CAMERA:String					= "android.permission.CAMERA";
-	public static inline var READ_CONTACTS:String			= "android.permission.READ_CONTACTS";
-	public static inline var WRITE_CONTACTS:String			= "android.permission.WRITE_CONTACTS";
-	public static inline var GET_ACCOUNTS:String			= "android.permission.GET_ACCOUNTS";
-	public static inline var ACCESS_FINE_LOCATION:String	= "android.permission.ACCESS_FINE_LOCATION";
-	public static inline var ACCESS_COARSE_LOCATION:String	= "android.permission.ACCESS_COARSE_LOCATION";
-	public static inline var RECORD_AUDIO:String			= "android.permission.RECORD_AUDIO";
-	public static inline var READ_PHONE_STATE:String		= "android.permission.READ_PHONE_STATE";
-	public static inline var CALL_PHONE:String				= "android.permission.CALL_PHONE";
-	public static inline var READ_CALL_LOG:String			= "android.permission.READ_CALL_LOG";
-	public static inline var WRITE_CALL_LOG:String			= "android.permission.WRITE_CALL_LOG";
-	public static inline var ADD_VOICEMAIL:String			= "com.android.voicemail.permission.ADD_VOICEMAIL";
-	public static inline var USE_SIP:String					= "android.permission.USE_SIP";
-	public static inline var PROCESS_OUTGOING_CALLS:String	= "android.permission.PROCESS_OUTGOING_CALLS";
-	public static inline var BODY_SENSORS:String			= "android.permission.BODY_SENSORS";
-	public static inline var SEND_SMS:String				= "android.permission.SEND_SMS";
-	public static inline var RECEIVE_SMS:String				= "android.permission.RECEIVE_SMS";
-	public static inline var READ_SMS:String				= "android.permission.READ_SMS";
-	public static inline var RECEIVE_WAP_PUSH:String		= "android.permission.RECEIVE_WAP_PUSH";
-	public static inline var RECEIVE_MMS:String				= "android.permission.RECEIVE_MMS";
-	public static inline var READ_EXTERNAL_STORAGE:String	= "android.permission.READ_EXTERNAL_STORAGE";
-	public static inline var WRITE_EXTERNAL_STORAGE:String	= "android.permission.WRITE_EXTERNAL_STORAGE";
+	public static inline var READ_CALENDAR:String           = "android.permission.READ_CALENDAR";
+	public static inline var WRITE_CALENDAR:String          = "android.permission.WRITE_CALENDAR";
+	public static inline var CAMERA:String                  = "android.permission.CAMERA";
+	public static inline var READ_CONTACTS:String           = "android.permission.READ_CONTACTS";
+	public static inline var WRITE_CONTACTS:String          = "android.permission.WRITE_CONTACTS";
+	public static inline var GET_ACCOUNTS:String            = "android.permission.GET_ACCOUNTS";
+	public static inline var ACCESS_FINE_LOCATION:String    = "android.permission.ACCESS_FINE_LOCATION";
+	public static inline var ACCESS_COARSE_LOCATION:String  = "android.permission.ACCESS_COARSE_LOCATION";
+	public static inline var RECORD_AUDIO:String            = "android.permission.RECORD_AUDIO";
+	public static inline var READ_PHONE_STATE:String        = "android.permission.READ_PHONE_STATE";
+	public static inline var CALL_PHONE:String              = "android.permission.CALL_PHONE";
+	public static inline var READ_CALL_LOG:String           = "android.permission.READ_CALL_LOG";
+	public static inline var WRITE_CALL_LOG:String          = "android.permission.WRITE_CALL_LOG";
+	public static inline var ADD_VOICEMAIL:String           = "com.android.voicemail.permission.ADD_VOICEMAIL";
+	public static inline var USE_SIP:String                 = "android.permission.USE_SIP";
+	public static inline var PROCESS_OUTGOING_CALLS:String  = "android.permission.PROCESS_OUTGOING_CALLS";
+	public static inline var BODY_SENSORS:String            = "android.permission.BODY_SENSORS";
+	public static inline var SEND_SMS:String                = "android.permission.SEND_SMS";
+	public static inline var RECEIVE_SMS:String             = "android.permission.RECEIVE_SMS";
+	public static inline var READ_SMS:String                = "android.permission.READ_SMS";
+	public static inline var RECEIVE_WAP_PUSH:String        = "android.permission.RECEIVE_WAP_PUSH";
+	public static inline var RECEIVE_MMS:String             = "android.permission.RECEIVE_MMS";
+	public static inline var READ_EXTERNAL_STORAGE:String   = "android.permission.READ_EXTERNAL_STORAGE";
+	public static inline var WRITE_EXTERNAL_STORAGE:String  = "android.permission.WRITE_EXTERNAL_STORAGE";
 	
 	/**
 	 * If this returns false, you must call requestPermission() before
@@ -83,30 +83,30 @@ class Permissions {
 #else
 
 class Permissions {
-	public static inline var READ_CALENDAR:String			= null;
-	public static inline var WRITE_CALENDAR:String			= null;
-	public static inline var CAMERA:String					= null;
-	public static inline var READ_CONTACTS:String			= null;
-	public static inline var WRITE_CONTACTS:String			= null;
-	public static inline var GET_ACCOUNTS:String			= null;
-	public static inline var ACCESS_FINE_LOCATION:String	= null;
-	public static inline var ACCESS_COARSE_LOCATION:String	= null;
-	public static inline var RECORD_AUDIO:String			= null;
-	public static inline var READ_PHONE_STATE:String		= null;
-	public static inline var CALL_PHONE:String				= null;
-	public static inline var READ_CALL_LOG:String			= null;
-	public static inline var WRITE_CALL_LOG:String			= null;
-	public static inline var ADD_VOICEMAIL:String			= null;
-	public static inline var USE_SIP:String					= null;
-	public static inline var PROCESS_OUTGOING_CALLS:String	= null;
-	public static inline var BODY_SENSORS:String			= null;
-	public static inline var SEND_SMS:String				= null;
-	public static inline var RECEIVE_SMS:String				= null;
-	public static inline var READ_SMS:String				= null;
-	public static inline var RECEIVE_WAP_PUSH:String		= null;
-	public static inline var RECEIVE_MMS:String				= null;
-	public static inline var READ_EXTERNAL_STORAGE:String	= null;
-	public static inline var WRITE_EXTERNAL_STORAGE:String	= null;
+	public static inline var READ_CALENDAR:String           = null;
+	public static inline var WRITE_CALENDAR:String          = null;
+	public static inline var CAMERA:String                  = null;
+	public static inline var READ_CONTACTS:String           = null;
+	public static inline var WRITE_CONTACTS:String          = null;
+	public static inline var GET_ACCOUNTS:String            = null;
+	public static inline var ACCESS_FINE_LOCATION:String    = null;
+	public static inline var ACCESS_COARSE_LOCATION:String  = null;
+	public static inline var RECORD_AUDIO:String            = null;
+	public static inline var READ_PHONE_STATE:String        = null;
+	public static inline var CALL_PHONE:String              = null;
+	public static inline var READ_CALL_LOG:String           = null;
+	public static inline var WRITE_CALL_LOG:String          = null;
+	public static inline var ADD_VOICEMAIL:String           = null;
+	public static inline var USE_SIP:String                 = null;
+	public static inline var PROCESS_OUTGOING_CALLS:String  = null;
+	public static inline var BODY_SENSORS:String            = null;
+	public static inline var SEND_SMS:String                = null;
+	public static inline var RECEIVE_SMS:String             = null;
+	public static inline var READ_SMS:String                = null;
+	public static inline var RECEIVE_WAP_PUSH:String        = null;
+	public static inline var RECEIVE_MMS:String             = null;
+	public static inline var READ_EXTERNAL_STORAGE:String   = null;
+	public static inline var WRITE_EXTERNAL_STORAGE:String  = null;
 	
 	public static inline function hasPermission(permission:String):Bool {
 		return true;
