@@ -4,4 +4,6 @@
 	<dependency name="android6permissions" path="dependencies/android" if="android" />
 	<android extension="com.player03.android6.Permissions" />
 	
+	<set name="supportLibraryVersion" value="24.2.1" unless="supportLibraryVersion" />
+	
 </project>
