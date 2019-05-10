@@ -2,7 +2,7 @@ package com.player03.android6;
 
 #if (android && openfl)
 
-import openfl.utils.JNI;
+import lime.system.JNI;
 
 class Permissions {
 	public static inline var READ_CALENDAR:String           = "android.permission.READ_CALENDAR";

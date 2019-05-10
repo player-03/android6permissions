@@ -4,8 +4,10 @@
   "license": "MIT",
   "tags": [],
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "releasenote": "",
   "contributors": ["player_03"],
-  "dependencies": {}
+  "dependencies": {
+	  "openfl": ""
+	}
 }
