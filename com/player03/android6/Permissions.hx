@@ -1,8 +1,10 @@
 package com.player03.android6;
 
-#if (android && openfl)
+import lime.app.Event;
 
+#if android
 import lime.system.JNI;
+#end
 
 class Permissions {
 	public static inline var ACCEPT_HANDOVER:String         = "android.permission.ACCEPT_HANDOVER";
@@ -47,96 +49,91 @@ class Permissions {
 	public static inline var WRITE_EXTERNAL_STORAGE:String  = "android.permission.WRITE_EXTERNAL_STORAGE";
 	
 	/**
-	 * If this returns false, you must call requestPermission() before
-	 * attempting to use the permission.
+	 * Checks whether the app already has the given permission.
 	 */
 	public static inline function hasPermission(permission:String):Bool {
+		#if android
 		return hasPermissionJNI(permission);
+		#else
+		return false;
+		#end
 	}
 	
 	/**
 	 * Displays a dialog requesting the given permission. This dialog will
 	 * be displayed even if the user already granted the permission,
 	 * allowing them to disable it if they like.
-	 * 
-	 * No confirmation event is available because OpenFL doesn't implement
-	 * onRequestPermissionsResult().
 	 */
 	public static inline function requestPermission(permission:String):Void {
-		return requestPermissionJNI(permission);
+		requestPermissions([permission]);
 	}
 	
 	/**
 	 * Displays a dialog requesting all of the given permissions at once.
 	 * This dialog will be displayed even if the user already granted the
 	 * permissions, allowing them to disable them if they like.
-	 * 
-	 * No confirmation event is available because OpenFL doesn't implement
-	 * onRequestPermissionsResult().
 	 */
-	public static inline function requestPermissions(permissions:Array<String>):Void {
-		return requestPermissionsJNI(permissions);
+	public static function requestPermissions(permissions:Array<String>):Void {
+		#if android
+		init();
+		requestPermissionsJNI(permissions);
+		#else
+		onPermissionsGranted.dispatch(permissions);
+		#end
 	}
 	
 	/**
-	 * Lets you know if you should explain why you need this permission. If
-	 * this returns true, it's your job to display a message to the user before
-	 * calling requestPermission() again. If you don't, the user may decline
-	 * the permission.
+	 * Lets you know if you should explain why you need this permission. If so,
+	 * display a message to the user before calling requestPermission().
 	 * 
 	 * https://developer.android.com/training/permissions/requesting.html#explain
 	 */
 	public static inline function shouldShowRequestPermissionRationale(permission:String):Bool {
+		#if android
 		return shouldShowRequestPermissionRationaleJNI(permission);
+		#else
+		return false;
+		#end
 	}
 	
+	public static var onPermissionsGranted(default, null) = new Event<Array<String>->Void>();
+	public static var onPermissionsDenied(default, null) = new Event<Array<String>->Void>();
+	
+	#if android
+	private static var initialized:Bool = false;
+	private static function init() {
+		if(!initialized) {
+			initialized = true;
+			JNI.createStaticMethod("com.player03.android6.Permissions", "init", "(Lorg/haxe/lime/HaxeObject;)V")
+				(new Permissions());
+		}
+	}
+	#end
+	
+	private inline function new() {}
+	
+	private function onRequestPermissionsResult(permissions:Array<String>, status:Array<Bool>):Void {
+		var granted:Array<String> = [];
+		var denied:Array<String> = [];
+		for(i => permission in permissions) {
+			if(status[i]) {
+				granted.push(permission);
+			} else {
+				denied.push(permission);
+			}
+		}
+		
+		if(granted.length > 0) {
+			onPermissionsGranted.dispatch(granted);
+		}
+		if(denied.length > 0) {
+			onPermissionsDenied.dispatch(denied);
+		}
+	}
+	
+	#if android
 	private static var hasPermissionJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "hasPermission", "(Ljava/lang/String;)Z");
-	private static var requestPermissionJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "requestPermission", "(Ljava/lang/String;)V");
 	private static var requestPermissionsJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "requestPermissions", "([Ljava/lang/String;)V");
 	private static var shouldShowRequestPermissionRationaleJNI = JNI.createStaticMethod("com.player03.android6.Permissions", "shouldShowRequestPermissionRationale", "(Ljava/lang/String;)Z");
+	#end
 }
-
-#else
-
-class Permissions {
-	public static inline var READ_CALENDAR:String           = null;
-	public static inline var WRITE_CALENDAR:String          = null;
-	public static inline var CAMERA:String                  = null;
-	public static inline var READ_CONTACTS:String           = null;
-	public static inline var WRITE_CONTACTS:String          = null;
-	public static inline var GET_ACCOUNTS:String            = null;
-	public static inline var ACCESS_FINE_LOCATION:String    = null;
-	public static inline var ACCESS_COARSE_LOCATION:String  = null;
-	public static inline var RECORD_AUDIO:String            = null;
-	public static inline var READ_PHONE_STATE:String        = null;
-	public static inline var CALL_PHONE:String              = null;
-	public static inline var READ_CALL_LOG:String           = null;
-	public static inline var WRITE_CALL_LOG:String          = null;
-	public static inline var ADD_VOICEMAIL:String           = null;
-	public static inline var USE_SIP:String                 = null;
-	public static inline var PROCESS_OUTGOING_CALLS:String  = null;
-	public static inline var BODY_SENSORS:String            = null;
-	public static inline var SEND_SMS:String                = null;
-	public static inline var RECEIVE_SMS:String             = null;
-	public static inline var READ_SMS:String                = null;
-	public static inline var RECEIVE_WAP_PUSH:String        = null;
-	public static inline var RECEIVE_MMS:String             = null;
-	public static inline var READ_EXTERNAL_STORAGE:String   = null;
-	public static inline var WRITE_EXTERNAL_STORAGE:String  = null;
-	
-	public static inline function hasPermission(permission:String):Bool {
-		return true;
-	}
-	
-	public static inline function requestPermission(permission:String):Void {
-	}
-	
-	public static inline function requestPermissions(permissions:Array<String>):Void {
-	}
-	
-	public static inline function shouldShowRequestPermissionRationale(permission:String):Bool {
-		return false;
-	}
-}
-
-#end

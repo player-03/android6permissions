@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+repositories {
+    google()
+}
+
 android {
 	compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
 	buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
@@ -7,5 +11,6 @@ android {
 
 dependencies {
 	compile project(':deps:extension-api')
-	compile 'com.android.support:support-v4:::SET_SUPPORT_LIBRARY_VERSION::'
+	implementation "androidx.activity:activity:1.2.+"
+	implementation "androidx.fragment:fragment:1.3.+"
 }
