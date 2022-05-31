@@ -1,12 +1,13 @@
 package com.player03.android6;
 
 import lime.app.Event;
+import lime.system.ForegroundWorker;
 
 #if android
 import lime.system.JNI;
 #end
 
-class Permissions {
+class Permissions extends ForegroundWorker {
 	public static inline var ACCEPT_HANDOVER:String         = "android.permission.ACCEPT_HANDOVER";
 	public static inline var ACCESS_BACKGROUND_LOCATION:String = "android.permission.ACCESS_BACKGROUND_LOCATION";
 	public static inline var ACCESS_COARSE_LOCATION:String  = "android.permission.ACCESS_COARSE_LOCATION";
