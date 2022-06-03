@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Permissions Test" package="com.player03.android6.test" version="1.0.0" company="player_03" />
+	<app main="Main" path="Export" file="PermissionsTest" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="feathersui" />
+	<haxelib name="android6permissions" />
+	
+	<config:android permission="android.permission.READ_CALENDAR" />
+	<config:android permission="android.permission.WRITE_CALENDAR" />
+	<config:android permission="android.permission.CAMERA" />
+	<config:android permission="android.permission.READ_CONTACTS" />
+	<config:android permission="android.permission.WRITE_CONTACTS" />
+	<config:android permission="android.permission.GET_ACCOUNTS" />
+	<config:android permission="android.permission.ACCESS_FINE_LOCATION" />
+	<config:android permission="android.permission.ACCESS_COARSE_LOCATION" />
+	<config:android permission="android.permission.RECORD_AUDIO" />
+	<config:android permission="android.permission.READ_PHONE_STATE" />
+	<config:android permission="android.permission.CALL_PHONE" />
+	<config:android permission="android.permission.READ_CALL_LOG" />
+	<config:android permission="android.permission.WRITE_CALL_LOG" />
+	<config:android permission="com.android.voicemail.permission.ADD_VOICEMAIL" />
+	<config:android permission="android.permission.USE_SIP" />
+	<config:android permission="android.permission.PROCESS_OUTGOING_CALLS" />
+	<config:android permission="android.permission.BODY_SENSORS" />
+	<config:android permission="android.permission.SEND_SMS" />
+	<config:android permission="android.permission.RECEIVE_SMS" />
+	<config:android permission="android.permission.READ_SMS" />
+	<config:android permission="android.permission.RECEIVE_WAP_PUSH" />
+	<config:android permission="android.permission.RECEIVE_MMS" />
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+	
+</project>
