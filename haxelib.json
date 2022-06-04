@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["android"],
   "description": "A utility to check for (and request) permissions in Android.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "releasenote": "Add permission granted/denied events.",
   "contributors": ["player_03"],
   "dependencies": {

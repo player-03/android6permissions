@@ -1,13 +1,17 @@
 package com.player03.android6;
 
+import lime.app.Application;
 import lime.app.Event;
-import lime.system.ForegroundWorker;
 
 #if android
 import lime.system.JNI;
 #end
 
-class Permissions extends ForegroundWorker {
+#if target.threaded
+import sys.thread.Deque;
+#end
+
+class Permissions {
 	public static inline var ACCEPT_HANDOVER:String         = "android.permission.ACCEPT_HANDOVER";
 	public static inline var ACCESS_BACKGROUND_LOCATION:String = "android.permission.ACCESS_BACKGROUND_LOCATION";
 	public static inline var ACCESS_COARSE_LOCATION:String  = "android.permission.ACCESS_COARSE_LOCATION";
@@ -48,6 +52,11 @@ class Permissions extends ForegroundWorker {
 	public static inline var WRITE_CALL_LOG:String          = "android.permission.WRITE_CALL_LOG";
 	public static inline var WRITE_CONTACTS:String			= "android.permission.WRITE_CONTACTS";
 	public static inline var WRITE_EXTERNAL_STORAGE:String  = "android.permission.WRITE_EXTERNAL_STORAGE";
+	
+	#if target.threaded
+	private static var grantedPermissions:Deque<Array<String>> = new Deque<Array<String>>();
+	private static var deniedPermissions:Deque<Array<String>> = new Deque<Array<String>>();
+	#end
 	
 	/**
 	 * Checks whether the app already has the given permission.
@@ -111,7 +120,9 @@ class Permissions extends ForegroundWorker {
 	}
 	#end
 	
-	private inline function new() {}
+	private inline function new() {
+		Application.current.onUpdate.add(update);
+	}
 	
 	private function onRequestPermissionsResult(permissions:Array<String>, status:Array<Bool>):Void {
 		var granted:Array<String> = [];
@@ -125,10 +136,22 @@ class Permissions extends ForegroundWorker {
 		}
 		
 		if(granted.length > 0) {
-			onPermissionsGranted.dispatch(granted);
+			grantedPermissions.add(granted);
 		}
 		if(denied.length > 0) {
-			onPermissionsDenied.dispatch(denied);
+			deniedPermissions.add(denied);
+		}
+	}
+	
+	private function update(dt:Int):Void {
+		var permissions:Array<String> = grantedPermissions.pop(false);
+		if(permissions != null) {
+			onPermissionsGranted.dispatch(permissions);
+		}
+		
+		permissions = deniedPermissions.pop(false);
+		if(permissions != null) {
+			onPermissionsDenied.dispatch(permissions);
 		}
 	}
 	
