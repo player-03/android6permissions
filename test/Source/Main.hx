@@ -1,6 +1,5 @@
 package;
 
-import openfl.Lib;
 import com.player03.android6.Permissions;
 import feathers.controls.Alert;
 import feathers.controls.Button;
@@ -12,7 +11,8 @@ import feathers.controls.TextCallout;
 import feathers.data.ArrayCollection;
 import feathers.data.ButtonBarItemState;
 import feathers.layout.FormLayout;
-import lime.system.ForegroundWorker;
+import lime.system.JNI;
+import openfl.Lib;
 
 class Main extends Form {
 	private var permissions:ListView;
@@ -143,7 +143,7 @@ class PermissionListener {
 		alert(permissions.join("\n"),
 			'Permission${permissions.length == 1 ? "" : "s"} granted');
 		
-		if(!ForegroundWorker.onMainThread()) {
+		if(!JNISafetyTools.onMainThread()) {
 			alert("onPermissionsGranted called from the wrong thread",
 				"Potential thread safety issue!");
 		}
@@ -153,7 +153,7 @@ class PermissionListener {
 		alert(permissions.join("\n"),
 			'Permission${permissions.length == 1 ? "" : "s"} denied');
 		
-		if(!ForegroundWorker.onMainThread()) {
+		if(!JNISafetyTools.onMainThread()) {
 			alert("onPermissionsDenied called from the wrong thread",
 				"Potential thread safety issue!");
 		}
